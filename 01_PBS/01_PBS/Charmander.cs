@@ -17,10 +17,9 @@ class Charmander
     }
 
     //Methods
-    public void BattleCry()
+    public string BattleCry()
     {
-        Console.WriteLine(this.nickname);
-
+        return (this.nickname);
     }
 }
 

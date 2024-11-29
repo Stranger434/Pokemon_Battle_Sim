@@ -17,7 +17,7 @@ class Program
             Console.WriteLine(charmander.nickname + " " + charmander.strenght + " " + charmander.weakness);
             for (int i = 0; i < 10; i++)
             {
-                charmander.BattleCry();
+                Console.WriteLine(charmander.BattleCry());
             }
         }
     }
