@@ -17,6 +17,7 @@ class Program
             Trainer trainer1 = new Trainer(FirstTrainerName);
             Trainer trainer2 = new Trainer(SecondTrainerName);
             Charmander charmander = new Charmander("Char", "Fire", "Water");
+            // Compositie want er zit een Charmander object in de Pokeball
             Pokeball pokeball = new Pokeball(false, false, charmander);
 
         for (int i = 0; i < 6; i++)
