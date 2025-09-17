@@ -7,28 +7,28 @@ public class Arena
     public static int trainer2points;
     public static int trainer1points;
 
-
-    public static void StartBattleLoop(Trainer trainer1, Trainer trainer2, Pokemon pokemon1, Pokemon pokemon2, Pokemon pokemon3)
+    public static void StartBattleLoop(Trainer trainer1, Trainer trainer2)
     {
         Random rnd = new Random();
         TotalBattles += 1;
+
+        Battle battle = new Battle(trainer1, trainer2);
 
         while (trainer1.Pokeballs.Count > 0 && trainer2.Pokeballs.Count > 0)
         {
             // Kies willekeurige Pokéball voor beide trainers
             int index1 = rnd.Next(0, trainer1.Pokeballs.Count);
             int index2 = rnd.Next(0, trainer2.Pokeballs.Count);
+            //Console.WriteLine(index1);
+            //Console.WriteLine(index2);
 
             Pokemon p1 = (Pokemon)trainer1.Pokeballs[index1].Pokemon;
             Pokemon p2 = (Pokemon)trainer2.Pokeballs[index2].Pokemon;
 
             trainer1.ThrowPokeball(index1);
-            Console.WriteLine(PokemonCheck.Check(trainer1, p1, pokemon1, pokemon2, pokemon3));
-
             trainer2.ThrowPokeball(index2);
-            Console.WriteLine(PokemonCheck.Check(trainer2, p2, pokemon1, pokemon2, pokemon3));
 
-            startBattle(p1, p2, trainer1, trainer2);
+            startBattle(battle, p1, p2);
         }
 
         Console.WriteLine("Alle Pokéballs zijn opgebruikt. Het gevecht is voorbij!");
@@ -36,12 +36,11 @@ public class Arena
         Console.WriteLine($"Totale rondes: {TotalRounds}");
     }
 
-    public static void startBattle(Pokemon p1, Pokemon p2, Trainer trainer1, Trainer trainer2)
+    public static void startBattle(Battle battle, Pokemon p1, Pokemon p2)
     {
-        Battle battle = new Battle();
-        string result = battle.fight(p1, p2, trainer1, trainer2);
+        string result = battle.fight(p1, p2);
         Console.WriteLine(result);
-        TotalRounds += battle.GetRounds();
-        Console.WriteLine(TotalRounds + " Rounds");
+        TotalRounds += 1;
+        Console.WriteLine(TotalRounds + " Rounds\n");
     }
 }

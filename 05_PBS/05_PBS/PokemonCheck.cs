@@ -1,6 +1,6 @@
 ﻿static class PokemonCheck
 {
-    public static string Check(Trainer trainer, Pokemon p, Pokemon pokemon1, Pokemon pokemon2, Pokemon pokemon3)
+    public static string Check(Trainer trainer, object p, Pokemon pokemon1, Pokemon pokemon2, Pokemon pokemon3)
     {
         if (trainer.Pokeballs.Count > -1)
         {

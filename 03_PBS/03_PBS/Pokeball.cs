@@ -1,44 +1,56 @@
-﻿
-
-using System.Security.Cryptography.X509Certificates;
-
-class Pokeball
+﻿class Pokeball
 {
-    //Fields
+    // Fields
     public bool isOpen;
+
     public bool isEmpty;
-    public object Pokemon;
+    public Pokemon Pokemon;
 
     // Constructor
-    public Pokeball(bool isOpen, bool isEmpty, object Pokemon)
+    public Pokeball(bool isOpen, bool isEmpty, Pokemon pokemon)
     {
         this.isOpen = isOpen;
         this.isEmpty = isEmpty;
-        this.Pokemon = Pokemon;
+        this.Pokemon = pokemon;
     }
 
-    //Methods
-    public bool OpenBall()
+    // Methods
+    public void OpenBall()
     {
-        return isOpen = true;
+        isOpen = true;
     }
 
-    public bool CloseBall()
+    public void CloseBall()
     {
-        return isOpen = false;
+        isOpen = false;
     }
 
-    public object ThrowBall()
-    {   
+    public Pokemon ThrowBall()
+    {
+        if (isEmpty || Pokemon == null)
+        {
+            Console.WriteLine("Deze Pokéball is leeg.");
+            return null;
+        }
+
         OpenBall();
+        Pokemon releasedPokemon = Pokemon;
+        Pokemon = null;
         isEmpty = true;
-        return Pokemon = null;
+        return releasedPokemon;
     }
 
-    public object StorePokemon(object pokemon)
+    public void ReturnToBall(Pokemon pokemon)
     {
-        CloseBall();
+        if (!isEmpty)
+        {
+            Console.WriteLine("De Pokéball is al bezet!");
+            return;
+        }
+
+        Pokemon = pokemon;
         isEmpty = false;
-        return Pokemon = pokemon;
+        CloseBall();
+        Console.WriteLine($"{pokemon.Name} is terug in de Pokéball.");
     }
 }

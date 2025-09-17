@@ -26,18 +26,20 @@ class Program
                 trainer2.ReturnPokeball(pokeball);
             }
 
-            trainer2.ReturnPokeball(pokeball);
-
             while (trainer1.Pokeballs.Count > 0 & trainer2.Pokeballs.Count > 0)
             {
                 trainer1.ThrowPokeball(0);
                 Console.WriteLine(trainer1.name + " Heeft een Ball gegooit");
                 Console.WriteLine($"{trainer1.name} heeft {trainer1.Pokeballs.Count} PokeBall(s)");
                 Console.WriteLine(charmander.BattleCry());
+
+
                 trainer2.ThrowPokeball(0);
                 Console.WriteLine(trainer2.name + " Heeft een Ball gegooit");
                 Console.WriteLine($"{trainer2.name} heeft {trainer2.Pokeballs.Count} PokeBall(s)");
                 Console.WriteLine(charmander.BattleCry());
+
+
             }
 
             Console.WriteLine("Q to quit / R to Restart");

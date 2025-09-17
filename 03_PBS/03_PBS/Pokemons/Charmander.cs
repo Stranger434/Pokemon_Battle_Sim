@@ -10,4 +10,9 @@
     {
         return (this.Name);
     }
+
+    public string setFire()
+    {
+        return ("a blaze");
+    }
 }
